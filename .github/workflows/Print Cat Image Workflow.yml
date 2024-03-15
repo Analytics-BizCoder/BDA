@@ -1,0 +1,31 @@
+name: Print Cat Image as ASCII
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Runs every minute
+    - cron: '*/1 * * * *'
+
+jobs:
+  print-cat-image:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install jp2a
+      run: sudo apt-get install jp2a
+
+    - name: Fetch Cat Image and Print as ASCII
+      run: |
+        export TERM=xterm-256color
+        # Fetch a cat image URL from the Cat API
+        IMAGE_URL=$(curl -s "https://api.thecatapi.com/v1/images/search" | jq -r '.[0].url')
+        
+        # Download the image and convert to ASCII art
+        curl -s $IMAGE_URL | jp2a - --colors
+      env:
+        CATS_API_KEY: ${{ secrets.CATS_API_KEY }}
