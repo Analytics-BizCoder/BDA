@@ -22,11 +22,11 @@ jobs:
       run: pip install requests opencv-python numpy
 
     - name: GET Cat Image
-      run: src/python get_cat_image.py
+      run: src/get_cat_image.py
       env:
         CATS_API_KEY: ${{ secrets.CATS_API_KEY }}
 
     - name: Check Cat Image
-      run: src/python checkcat_image.py
+      run: src/checkcat_image.py
       env:
         CATS_API_KEY: ${{ secrets.CATS_API_KEY }}
