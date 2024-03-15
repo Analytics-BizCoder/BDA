@@ -3,7 +3,7 @@ name: Print Cat Image as ASCII
 on:
   push:
     branches:
-      - master
+      - main
   schedule:
     # Runs every minute
     - cron: '*/1 * * * *'
