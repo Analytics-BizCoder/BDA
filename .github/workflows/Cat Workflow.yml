@@ -31,6 +31,3 @@ jobs:
 
       - name: Check Cat Image
         run: python src/check_cat_image.py 
-
-      - name: Print Cat Image
-        run: python src/print_cat_image.py 
