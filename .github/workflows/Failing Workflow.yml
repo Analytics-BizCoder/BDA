@@ -1,0 +1,13 @@
+name: Always Fail Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  fail:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Always Fail Step
+        run: exit 1
