@@ -26,13 +26,16 @@ jobs:
         run: pip install requests opencv-python-headless
 
       - name: Get Cat Image
-        run: python src/get_cat_image.py
+        id: get_cat_image
+        run: |
+          cat_image_url=$(python src/get_cat_image.py)
           echo "::set-output name=cat_image_url::$cat_image_url"
 
       - name: Check Cat Image
         run: python src/check_cat_image.py 
 
       - name: Print Cat Image
-        run: python src/print_cat_image.py "${{ steps.get_cat_image.outputs.cat_image_url }}"
+        run: python src/print_cat_image.py ${{ steps.get_cat_image.outputs.cat_image_url }}
+
 
 
