@@ -28,10 +28,5 @@ jobs:
       - name: Get Cat Image
         run: python src/get_cat_image.py
 
-      - name: Print CAT_IMAGE_URL
-        run: echo "CAT_IMAGE_URL: $CAT_IMAGE_URL"
-
       - name: Check Cat Image
-        run: python src/check_cat_image.py $CAT_IMAGE_URL
-        env:
-          CAT_IMAGE_URL: ${{ steps.get_cat_image.outputs.cat_image_url }}
+        run: python src/check_cat_image.py 
