@@ -1,16 +1,13 @@
 name: Print Cat Image as ASCII
+
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+    branches:
+      - main
   schedule:
     # Runs every minute
     - cron: '*/1 * * * *'
 
-  workflow_dispatch:
-  
 jobs:
   print-cat-image:
     runs-on: ubuntu-latest
