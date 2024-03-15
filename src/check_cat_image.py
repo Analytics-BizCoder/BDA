@@ -31,3 +31,8 @@ def check_for_cat(cat_image_url):
     else:
         return False
 
+# Example usage:
+if check_for_cat(cat_image_url):
+    print("The image contains a cat!")
+else:
+    print("No cats found in the image.")
