@@ -2,14 +2,25 @@ import sys
 import cv2
 import urllib.request
 import numpy as np
+import requests
+import os
 
-# Get the cat image URL from command-line arguments
-# Check if the cat image URL is provided as a command-line argument
-if len(sys.argv) < 2:
-    print("Usage: python check_cat_image.py <cat_image_url>")
-    sys.exit(1)
+# Get API key from environment variable
+api_key_cats = os.environ.get('CATS_API_KEY')
 
-cat_image_url = sys.argv[1]
+def fetch_cat_image_with_api_key():
+    api_key = api_key_cats
+    headers = {
+        "x-api-key": api_key
+    }
+    response = requests.get("https://api.thecatapi.com/v1/images/search", headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        if data:
+            cat_image_url = data[0]['url']
+            return cat_image_url
+# Fetch a cat image URL using the API
+cat_image_url = fetch_cat_image_with_api_key()    
 
 def check_for_cat(cat_image_url):
     # Load the cascade for detecting cats
@@ -36,3 +47,8 @@ def check_for_cat(cat_image_url):
     else:
         return False
 
+# Check if image contains a cat
+if check_for_cat(cat_image_url):
+    print("The image contains a cat!")
+else:
+    print("No cats found in the image.")

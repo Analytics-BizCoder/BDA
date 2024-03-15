@@ -16,11 +16,5 @@ def fetch_cat_image_with_api_key():
         if data:
             cat_image_url = data[0]['url']
             print(f"Cat image URL: {cat_image_url}")
-            # Pass the cat image URL to the check_cat.py script as a command-line argument
-            subprocess.run(["python", "check_cat.py", cat_image_url])
-        else:
-            print("No cat images found.")
-    else:
-        print(f"Failed to fetch cat images. Status code: {response.status_code}")
 
 fetch_cat_image_with_api_key()
