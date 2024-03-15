@@ -26,9 +26,9 @@ jobs:
         run: pip install requests opencv-python-headless
 
       - name: Get Cat Image
-        run: |
+        run: python src/get_cat_image.py
           python get_cat_image.py
 
       - name: Check Cat Image
-        run: |
+        run: python src/check_cat_image.py
           python check_cat_image.py
