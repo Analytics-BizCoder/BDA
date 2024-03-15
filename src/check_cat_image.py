@@ -28,8 +28,9 @@ def check_for_cat(cat_image_url):
 
     # Download the cat image from the URL
     try:
-        req = urllib.request.urlopen(cat_image_url)
-        arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
+        response = requests.get(cat_image_url)
+        response.raise_for_status()  # Raise an exception for HTTP errors
+        arr = np.asarray(bytearray(response.content), dtype=np.uint8)
         cat_image = cv2.imdecode(arr, -1)
     except Exception as e:
         print("Failed to download the cat image:", e)
