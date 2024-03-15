@@ -16,5 +16,10 @@ def fetch_cat_image_with_api_key():
         if data:
             cat_image_url = data[0]['url']
             print(f"Cat image URL: {cat_image_url}")
+            return cat_image_url
+            
+    # Set the cat image URL as an output parame
 
-fetch_cat_image_with_api_key()
+cat_image_url= fetch_cat_image_with_api_key()
+
+print(f"::set-output name=cat_image_url::{cat_image_url}")
