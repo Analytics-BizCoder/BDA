@@ -4,6 +4,11 @@ import urllib.request
 import numpy as np
 
 # Get the cat image URL from command-line arguments
+# Check if the cat image URL is provided as a command-line argument
+if len(sys.argv) < 2:
+    print("Usage: python check_cat_image.py <cat_image_url>")
+    sys.exit(1)
+
 cat_image_url = sys.argv[1]
 
 def check_for_cat(cat_image_url):
